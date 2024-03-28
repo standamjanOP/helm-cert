@@ -1,0 +1,6 @@
+**/*.tgz
+secrets
+secrets/*
+key.txt
+keys.txt
+**/*.dec

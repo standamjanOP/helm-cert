@@ -1,0 +1,86 @@
+# Default values for demo-java-helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+environnement: ovh
+phase: dev
+
+image:
+  repository: harbor.apps.c6.numerique-interieur.com/mi-service-team
+  name: java-demo
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "master"
+
+imagePullSecrets:
+  - name: "default-secret"
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: NodePort
+  port: 8080
+
+ingress:
+  enabled: true
+  secret:
+    enabled: true
+  host: plec-demo.dev.numerique-interieur.com
+
+resources:
+  limits:
+    memory: "512Mi"
+    cpu: "1"
+  requests:
+    memory: "512Mi"
+    cpu: "500Mi"
+
+global:
+  postgresql:
+    auth:
+      existingSecret: my-secret
+      secretKeys:
+        userPasswordKey: "PG_PASSWORD"
+        adminPasswordKey: "PG_PASSWORD"
+      username: "userdemo"
+      database: "demodb"
+
+# Contrainte de sécurité Openshift
+postgresql:
+  fullnameOverride: postgres-demo
+  volumePermissions:
+    enabled: false
+    securityContext:
+      runAsUser: "auto"
+  securityContext:
+    enabled: false
+  shmVolume:
+    chmod:
+      enabled: false
+  containerSecurityContext:
+    enabled: false
+  podSecurityContext:
+    enabled: false
+  primary:
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "1"
+      requests:
+        memory: "512Mi"
+        cpu: "1"
+    volumePermissions:
+      enabled: false
+      securityContext:
+        runAsUser: "auto"
+    securityContext:
+      enabled: false
+    shmVolume:
+      chmod:
+        enabled: false
+    containerSecurityContext:
+      enabled: false
+    podSecurityContext:
+      enabled: false
