@@ -35,7 +35,7 @@ resources:
     cpu: "1"
   requests:
     memory: "512Mi"
-    cpu: "1"
+    cpu: "500m"
 
 global:
   postgresql:
