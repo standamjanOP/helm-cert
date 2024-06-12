@@ -8,7 +8,7 @@ environnement: ovh
 phase: dev
 
 image:
-  repository: harbor.apps.c6.numerique-interieur.com/mi-certifdamjanlab1
+  repository: harbor.apps.c6.numerique-interieur.com/mi-certifdamjanlab1/
   name: java-demo
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
