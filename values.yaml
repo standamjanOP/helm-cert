@@ -27,7 +27,7 @@ ingress:
   enabled: true
   secret:
     enabled: true
-  host: plec-demo.dev.numerique-interieur.com
+  host: damjan-certif.dev.numerique-interieur.com
 
 resources:
   limits:
