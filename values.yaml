@@ -70,7 +70,7 @@ postgresql:
         cpu: "1"
       requests:
         memory: "512Mi"
-        cpu: "1"
+        cpu: "500m"
     volumePermissions:
       enabled: false
       securityContext:
